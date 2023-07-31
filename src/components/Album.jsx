@@ -1,13 +1,14 @@
 import React from "react";
 
-function Album() {
+function Album({title = "",img }) {
 
     return (
         <>
             <div className="w-[150px] h-[200px]">
-                <img src="./public/album.svg" className="w-[150px] h-[150px] object-contain" alt="" />
-                <span className="text-xs text-gray-500">Ed Sheeran, Big Sean,
-                    Juice WRLD, Post Malone</span>
+                <img src={img || "./public/album.svg"} className="w-[150px] h-[150px] object-contain" alt="" />
+                <span className="text-xs text-gray-500">
+                    {title}
+                </span>
             </div>
         </>
     )
