@@ -16,19 +16,19 @@ export default function Layout(props) {
 			<main>
                 <Outlet/>    
             </main>
-			<footer className="w-full fixed bottom-5">
+			<footer className="w-full fixed bottom-5 bg-black cu">
 				<div className="container flex justify-around">
-					<div className="flex flex-col justify-center items-center">
+					<div className="cursor-pointer flex flex-col justify-center items-center">
 						<img src={"/icons/home.svg"} alt="" />
-						<h3>Home</h3>
+						<h3 className="footer-text">Home</h3>
 					</div>
-					<div className="flex flex-col justify-center items-center">
+					<div className="cursor-pointer flex flex-col justify-center items-center">
 						<img src={"/icons/search.svg"} alt="" />
-						<h3>Search</h3>
+						<h3 className="footer-text">Search</h3>
 					</div>
-					<div className="flex flex-col justify-center items-center">
+					<div className="cursor-pointer flex flex-col justify-center items-center">
 						<img src={"/icons/library.svg"} alt="" />
-						<h3>Library</h3>
+						<h3 className="footer-text">Library</h3>
 					</div>
 				</div>
 			</footer>
