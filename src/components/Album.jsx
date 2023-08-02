@@ -1,7 +1,7 @@
 import React from "react";
 
 function Album({ title = "", img }) {
-
+    
     return (
         <>
             <div className="flex flex-col">

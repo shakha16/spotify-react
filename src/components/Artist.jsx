@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
+
 
 function Artist({ name, surname, avatar }) {
-
+    
 
     return (
         <>

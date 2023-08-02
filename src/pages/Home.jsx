@@ -1,15 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Artist from "../components/Artist";
 import Album from "../components/Album";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+	const [playlists, setPlaylists] = useState([])
+
+	useEffect(() => {
+		const token = window.localStorage.getItem('token')
+
+		if(token) {
+			const getSaveds = async () => {
+				const res = await axios.get("https://api.spotify.com/v1/me/playlists?limit=50&offset=0", {
+					headers: {
+						Authorization: `Bearer ${token}`
+					}
+				})
+				if(res.status === 200 || res.status === 201) return res.data?.items
+
+			}
+
+			getSaveds()
+				.then(res => setPlaylists(res))
+		}
+
+
+	}, []);
+
+	console.log(playlists);
+
 	return (
 		<div className="container overflow-y-scroll overflow-x-hidden">
 			<div className="flex overflow-x-scroll overflow-y-hidden gap-4">
-				<Artist name={"Alex"} surname={"Adams"} avatar={"/icons/erp.svg"} />
-				<Artist name={"Alex"} surname={"Adams"} avatar={"/icons/erp.svg"} />
-				<Artist name={"Alex"} surname={"Adams"} avatar={"/icons/erp.svg"} />
-				<Artist name={"Alex"} surname={"Adams"} avatar={"/icons/erp.svg"} />
+				{
+					playlists.length > 0 ? (
+						playlists.map(item => <Link to={`/${item.id}`} key={item.id} ><Artist name={item.name} surname={""} avatar={item.images[0].url} /></Link>)
+					) :
+					"loading..."
+				}
 			</div>
 			<div className="flex flex-col gap-4">
 				<div className="flex items-center gap-2">
