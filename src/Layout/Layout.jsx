@@ -22,13 +22,12 @@ export default function Layout() {
 			window.location.href = "";
 			window.localStorage.setItem("token", token);
 		}
-        
-        setLogedIn(true);
-	}, []);
+		setLogedIn(true);
+	});
 
 	return (
 		<>
-			{logedIn ? (
+			{logedIn === false ? (
 				<div className="relative">
 					<header className="pt-[25px] pb-4">
 						<div className="container flex items-center justify-between">
