@@ -1,16 +1,18 @@
 import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import {MdOutlinePause} from 'react-icons/md'
+import {BiBluetooth} from 'react-icons/bi'
 
 
-export const context = createContext('')
+export const context = createContext("");
 
 export default function Layout() {
 	const [token, setToken] = useState(null);
-	const [text, setText] = useState('HOME')
+	const [text, setText] = useState("HOME");
 
 	const chageText = (newText) => {
-		setText(newText)
-	}
+		setText(newText);
+	};
 
 	const client_id = "f2e286ece2574ad6b334b55d03764483";
 	const REDIRECT_URI = "http://localhost:5173";
@@ -32,7 +34,7 @@ export default function Layout() {
 			window.localStorage.setItem("token", token);
 		}
 
-		setToken(token)
+		setToken(token);
 	}, []);
 
 	if (!token) {
@@ -48,7 +50,7 @@ export default function Layout() {
 	console.log(text);
 
 	return (
-		<context.Provider value={{text, chageText}} >
+		<context.Provider value={{ text, chageText }}>
 			<div className="relative">
 				<header className="pt-[25px] pb-4">
 					<div className="container flex items-center justify-between">
@@ -63,6 +65,22 @@ export default function Layout() {
 				<main>
 					<Outlet />
 				</main>
+				<div className="fixed bottom-14 left-4 right-4 h-20 bg-[#3A0E17] rounded-lg">
+					<div className="w-full h-full flex items-center justify-between p-5">
+						<img src="/images/song.png" alt="" />
+						<div className="w-[90%] h-full flex flex-col items-start justify-between px-2" >
+							<marquee>From Me to You - Mono / Remastered</marquee>
+							<span className="player2 text-[#17B54E] flex items-center gap-2" >
+								<img src="/icons/bluetooth.svg" alt="" />
+								BEATSPILL+
+							</span>
+						</div>
+						<div className="flex items-center gap-1" >
+							<BiBluetooth size={30} color="#17B54E" />
+							<MdOutlinePause size={40} />
+						</div>
+					</div>
+				</div>
 				<footer className="w-full fixed bottom-5 bg-black cu">
 					<div className="container flex justify-around">
 						<div className="cursor-pointer flex flex-col justify-center items-center">
