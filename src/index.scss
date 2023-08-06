@@ -17,6 +17,16 @@ body {
     align-items: center;
 }
 
+.footer-text {
+    color: #E5E5E5;
+    text-align: center;
+    font-family: Avenir Next;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
 .text2 {
     color: #FFF;
     font-family: Avenir Next;
@@ -92,4 +102,8 @@ body {
 
 a {
     cursor: default;
+}
+
+.bg {
+    background: linear-gradient(#836e55, #4C4134, #15120F, black);
 }
