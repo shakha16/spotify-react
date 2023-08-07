@@ -50,8 +50,8 @@ export default function Layout() {
 
 	return (
 		<context.Provider value={{ text, chageText }}>
-			<div className="relative">
-				<header className="pt-[25px] pb-4">
+			<div className="relative pb-[100px]">
+				{/* <header className="pt-[25px] pb-4">
 					<div className="container flex items-center justify-between">
 						<h1 className="text">Recently played</h1>
 						<div className="flex items-center gap-[22px] bo">
@@ -60,7 +60,7 @@ export default function Layout() {
 							<img src={"/icons/settings.svg"} alt="" />
 						</div>
 					</div>
-				</header>
+				</header> */}
 				<main className="overflow-scroll">
 					<Outlet />
 					<Song isOpen={openPLayer} close={setOpenPlayer} />
