@@ -10,6 +10,17 @@ body {
     width: 0;
 }
 
+.but {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #a7a7a7;
+    font-size: 11px;
+}
+
+.bg {
+    background: rgba(255, 255, 255, 0.3);
+}
+
 .container {
     width: 100%;
     padding: 0 17px;
@@ -106,4 +117,30 @@ a {
 
 .bg {
     background: linear-gradient(#836e55, #4C4134, #15120F, black);
+
+    .player1 {
+        color: #FFF;
+        font-family: Avenir Next;
+        font-size: 13.5px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px;
+        letter-spacing: -0.405px;
+        width: 100% !important;
+    }
+
+    .player2 {
+        color: #17B54E;
+        text-align: center;
+        font-family: Avenir Next;
+        font-size: 10.5px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+}
+
+.custom-transition {
+    transition: all .7s ease;
 }
