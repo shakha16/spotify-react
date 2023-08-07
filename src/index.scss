@@ -10,6 +10,17 @@ body {
     width: 0;
 }
 
+.but {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: 1px solid #a7a7a7;
+    font-size: 11px;
+}
+
+.bg {
+    background: rgba(255, 255, 255, 0.3);
+}
+
 .container {
     width: 100%;
     padding: 0 17px;
@@ -84,6 +95,7 @@ body {
     line-height: 17px;
     width: 130px;
 }
+
 .player1 {
     color: #FFF;
     font-family: Avenir Next;
