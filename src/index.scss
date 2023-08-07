@@ -25,6 +25,7 @@ body {
     width: 100%;
     padding: 0 17px;
     margin: 0 auto;
+    align-items: center;
 }
 
 .footer-text {
@@ -96,26 +97,50 @@ body {
     width: 130px;
 }
 
-.player1 {
-    color: #FFF;
-    font-family: Avenir Next;
-    font-size: 13.5px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 28px;
-    letter-spacing: -0.405px;
-    width: 100% !important;
+.btn {
+    width: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 1000px;
+    border: solid white 2px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
 }
 
-.player2 {
-    color: #17B54E;
-    text-align: center;
-    font-family: Avenir Next;
-    font-size: 10.5px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+a {
+    cursor: default;
 }
+
+.bg {
+    background: linear-gradient(#836e55, #4C4134, #15120F, black);
+
+    .player1 {
+        color: #FFF;
+        font-family: Avenir Next;
+        font-size: 13.5px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px;
+        letter-spacing: -0.405px;
+        width: 100% !important;
+    }
+
+    .player2 {
+        color: #17B54E;
+        text-align: center;
+        font-family: Avenir Next;
+        font-size: 10.5px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+
+}
+
 .custom-transition {
     transition: all .7s ease;
 }

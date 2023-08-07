@@ -50,7 +50,7 @@ const Home = () => {
 				</div>
 				<div className="flex gap-4 overflow-x-scroll"></div>
 			</div>
-			<h3 className="demi-bold">Editor’s picks</h3>
+			<h3 className="demi-bold">Editor's picks</h3>
 			<div className="flex gap-4 overflow-x-scroll overflow-y-hidden pt-3">
 				<Album
 					title={"Ed Sheeran, Big Sean, Juice WRLD, Post Malone"}

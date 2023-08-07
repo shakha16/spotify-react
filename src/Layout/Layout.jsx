@@ -90,6 +90,7 @@ export default function Layout() {
 									<MdOutlinePause size={40} />
 								</div>
 							</div>
+
 						</div>
 						<footer className="w-full fixed bottom-0 bg-black cu">
 							<div className="container flex justify-around">
