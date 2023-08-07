@@ -9,11 +9,13 @@ import { MdOutlineDoNotDisturbOn } from "react-icons/md"
 import { GoShareAndroid } from "react-icons/go"
 import { BsArrowsAngleExpand } from "react-icons/bs"
 
-export default function Song() {
+export default function Song({isOpen, close}) {
     return (
-        <div className="container">
+        <div className={`custom-transition overflow-scroll h-[100vh] container fixed ${isOpen ? "top-0" : "top-[1000px]" } bg-orange-900 rounded-lg `}>
             <div className="flex items-center justify-between mt-2">
-                <AiOutlineArrowDown />
+                <AiOutlineArrowDown
+                    onClick={() => close(false)}
+                />
                 <div className="flex flex-col items-center">
                     <span className="text-[12px] text-gray-400">из плейлиста</span>
                     <h6>Song to sing</h6>
