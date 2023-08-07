@@ -67,7 +67,7 @@ export default function Layout() {
 				</main>
 				{!openPLayer ? (
 					<>
-						<div className="fixed bottom-9 left-4 right-4 h-20 bg-[#3A0E17] rounded-lg">
+						<div className="fixed bottom-14 left-4 right-4 h-20 bg-[#3A0E17] rounded-lg">
 							<div className="w-full h-full flex items-center justify-between p-5">
 								<img src="/images/song.png" alt="" />
 								<div
@@ -91,7 +91,7 @@ export default function Layout() {
 								</div>
 							</div>
 						</div>
-						<footer className="w-full fixed bottom-0 bg-black cu">
+						<footer className="w-full fixed bottom-0 bg-black h-14 flex items-center">
 							<div className="container flex justify-around">
 								<div className="cursor-pointer flex flex-col justify-center items-center">
 									<img src={"/icons/home.svg"} alt="" />
