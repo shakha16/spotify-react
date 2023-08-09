@@ -19,7 +19,7 @@ export default function Layout() {
 	const REDIRECT_URI = "http://localhost:5173";
 	const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 	const RESPONSE_TYPE = "token";
-
+	
 	useEffect(() => {
 		const hash = window.location.hash;
 		let token = window.localStorage.getItem("token");
@@ -80,6 +80,7 @@ export default function Layout() {
 									<MdOutlinePause size={40} />
 								</div>
 							</div>
+
 						</div>
 						<footer className="w-full fixed bottom-0 bg-black h-14 flex items-center">
 							<div className="container flex justify-around">

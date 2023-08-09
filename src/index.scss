@@ -25,6 +25,7 @@ body {
     width: 100%;
     padding: 0 17px;
     margin: 0 auto;
+    align-items: center;
 }
 
 .footer-text {
@@ -96,6 +97,29 @@ body {
     width: 130px;
 }
 
+.btn {
+    width: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+    border-radius: 1000px;
+    border: solid white 2px;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+a {
+    cursor: default;
+}
+
+.bg {
+    background: linear-gradient(#836e55, #4C4134, #15120F, black);
+
+}
+
 .player1 {
     color: #FFF;
     font-family: Avenir Next;
@@ -116,6 +140,8 @@ body {
     font-weight: 400;
     line-height: normal;
 }
+
+
 .custom-transition {
     transition: all .7s ease;
 }

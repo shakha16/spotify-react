@@ -14,4 +14,5 @@ function Album({ title = "", img }) {
     )
 }
 
+
 export default Album
