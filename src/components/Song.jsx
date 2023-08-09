@@ -9,7 +9,7 @@ import { MdOutlineDoNotDisturbOn } from "react-icons/md"
 import { GoShareAndroid } from "react-icons/go"
 import { BsArrowsAngleExpand } from "react-icons/bs"
 
-export default function Song({isOpen, close}) {
+export default function Song({isOpen, close, track}) {
     return (
         <div className={`custom-transition overflow-scroll h-[100vh] container fixed ${isOpen ? "top-0" : "top-[1000px]" } bg-orange-900 rounded-lg `}>
             <div className="flex items-center justify-between mt-2">
@@ -22,7 +22,7 @@ export default function Song({isOpen, close}) {
                 </div>
                 <SlOptionsVertical />
             </div>
-            <img src="/icons/one.svg" alt="" className="w-full m-auto max-w-[400px] pt-9 pb-9 " />
+            <img src={track?.album?.images[0].url} alt="" className="w-full m-auto max-w-[400px] pt-9 pb-9 " />
             <div className="flex flex-col">
                 <h2>Troublemaker (feat. Flo Rida)</h2>
                 <p className="text-[12px] text-gray-400">Olly Murs, Flo Rida</p>

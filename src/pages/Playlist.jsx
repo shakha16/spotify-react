@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { context } from "../Layout/Layout";
+import { playerCTX } from "../Layout/Layout";
 
 const Playlist = () => {
 	const [tracks, setTracks] = useState([]);
@@ -50,7 +50,6 @@ const Playlist = () => {
 
 const Audio = ({track}) => {
     
-    const {chageText} = useContext(context)
     
     return (
         <audio

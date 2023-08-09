@@ -2,18 +2,53 @@ import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { MdOutlinePause } from "react-icons/md";
 import { BiBluetooth } from "react-icons/bi";
+import { FaPlay } from "react-icons/fa";
 import Song from "../components/Song";
 
-export const context = createContext([]);
+export const playerCTX = createContext({ tracks: [], songIdx: 0 });
 
 export default function Layout() {
 	const [token, setToken] = useState(null);
-	const [text, setText] = useState("HOME");
+	const [player, setPlayer] = useState(null);
+	const [tracks, setTracks] = useState({ arr: [], idx: 0 });
+	const [currentTrack, setCurrentTrack] = useState(null);
 	const [openPLayer, setOpenPlayer] = useState(false);
+	const [play, setPLay] = useState(false);
 
-	const chageText = (newText) => {
-		setText(newText);
+	const setSong = (data) => {
+		setCurrentTrack(data.tracks[data.songIdx]);
+		setTracks({ arr: data.tracks, idx: data.songIdx });
+		setPLay(true);
 	};
+
+	console.log(play);
+
+	useEffect(() => {
+		const audio = document.getElementById("player");
+
+		if (audio) {
+			if (play) {
+				audio.play();
+			} else {
+				audio.pause();
+			}
+
+			audio.onended = () => {
+				console.log(tracks.arr.length, tracks.idx);
+
+				if (tracks.arr.length === tracks.idx + 1) {
+					console.log(tracks.arr);
+					setTracks({ arr: tracks.arr, idx: 0 });
+					setCurrentTrack(tracks.arr[0]);
+					audio.src = tracks.arr[0].preview_url;
+				} else {
+					setTracks({ arr: tracks.arr, idx: tracks.idx + 1 });
+					setCurrentTrack(tracks.arr[tracks.idx + 1]);
+					audio.src = tracks.arr[tracks.idx].preview_url;
+				}
+			};
+		}
+	});
 
 	const client_id = "f2e286ece2574ad6b334b55d03764483";
 	const REDIRECT_URI = "http://localhost:5173";
@@ -48,34 +83,42 @@ export default function Layout() {
 		);
 	}
 
+	// console.log(currentTrack);
+
 	return (
-		<context.Provider value={{ text, chageText }}>
+		<playerCTX.Provider value={{ player, setSong }}>
 			<div className="relative pb-[100px]">
 				<main className="overflow-scroll">
 					<Outlet />
-					<Song isOpen={openPLayer} close={setOpenPlayer} />
+					<Song isOpen={openPLayer} close={setOpenPlayer} track={currentTrack} />
 				</main>
 				{!openPLayer ? (
 					<>
 						<div className="fixed bottom-14 left-4 right-4 h-20 bg-[#3A0E17] rounded-lg">
 							<div className="w-full h-full flex items-center justify-between p-5">
-								<img src={text.src || "/images/song.png"} alt="" className="w-[37px] h-[37px]" />
+								<img
+									src={
+										currentTrack?.album?.images[0].url || "/images/song.png"
+									}
+									alt=""
+									className="w-[37px] h-[37px]"
+								/>
 								<div
 									onClick={() => setOpenPlayer(!openPLayer)}
 									className="w-[90%] h-full flex flex-col items-start justify-between px-2"
 								>
-									<marquee>
-										{text.text}
-									</marquee>
-									<span className="player2 text-[#17B54E] flex items-center gap-2">
-										{text.artist}
-									</span>
+									<marquee>{currentTrack?.name}</marquee>
 								</div>
 								<div className="flex items-center gap-1">
 									<BiBluetooth size={30} color="#17B54E" />
-									<MdOutlinePause size={40} />
+									<div onClick={() => setPLay(!play)} >
+										{play ? (
+											<MdOutlinePause size={40} />
+											) : (
+											<FaPlay size={25} />
+										)}
+									</div>
 								</div>
-								{/* <audio src={text.audio}></audio> */}
 							</div>
 						</div>
 						<footer className="w-full fixed bottom-0 bg-black h-14 flex items-center">
@@ -96,7 +139,8 @@ export default function Layout() {
 						</footer>
 					</>
 				) : null}
+				<audio src={currentTrack?.preview_url} id="player"></audio>
 			</div>
-		</context.Provider>
+		</playerCTX.Provider>
 	);
 }
