@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdOutlineDownloadForOffline } from "react-icons/md";
 import { AiOutlineEllipsis } from "react-icons/ai";
 import IndieItem from "../components/indieItem";
 import { useParams } from "react-router-dom";
+import { context } from "../Layout/Layout";
+
 
 function IndiePop({ img, title }) {
 	const [tracks, setTracks] = useState([]);
@@ -16,7 +18,7 @@ function IndiePop({ img, title }) {
 		const token = window.localStorage.getItem("token");
 
 		if (token) {
-            const getPLayslit = async () => {
+			const getPLayslit = async () => {
 				const res = await axios.get(
 					`https://api.spotify.com/v1/playlists/${id}`,
 					{
@@ -29,8 +31,8 @@ function IndiePop({ img, title }) {
 					return res.data;
 			};
 
-            getPLayslit()
-                .then(res => setPlaylistData(res))
+			getPLayslit()
+				.then(res => setPlaylistData(res))
 
 			const getSaveds = async () => {
 				const res = await axios.get(
@@ -48,8 +50,13 @@ function IndiePop({ img, title }) {
 			getSaveds().then((res) => setTracks(res));
 		}
 	}, []);
+	// const { chageText } = useContext(context)
 
-	console.log(tracks);
+	// chageText({audio: tracks.map(item => item.track.preview_url)})
+	// console.log(
+	// 	tracks.map(item => item.track.preview_url)
+	// );
+
 	return (
 		<>
 			<div className="w-[100%] flex flex-col gap-1 items-center mx-auto bg">
@@ -101,9 +108,9 @@ function IndiePop({ img, title }) {
 					<div className="flex flex-col gap-2">
 						{tracks.length > 0
 							? tracks.map(
-									(track, idx) =>
-										track.track.preview_url && <IndieItem {...track.track} />
-							  )
+								(track, idx) =>
+									track.track.preview_url && <IndieItem {...track.track} />
+							)
 							: "loading..."}
 					</div>
 				</div>

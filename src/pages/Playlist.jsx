@@ -28,7 +28,7 @@ const Playlist = () => {
 		}
 	}, []);
 
-	console.log(tracks);
+	// console.log(tracks);
 	// preview_url
 	return (
 		<div>
@@ -56,7 +56,6 @@ const Audio = ({track}) => {
         <audio
             src={track?.track?.preview_url}
             controls
-            onPlay={() => chageText(track.track.name)}
         ></audio>
     )
 }

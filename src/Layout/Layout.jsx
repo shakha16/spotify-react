@@ -4,7 +4,7 @@ import { MdOutlinePause } from "react-icons/md";
 import { BiBluetooth } from "react-icons/bi";
 import Song from "../components/Song";
 
-export const context = createContext("");
+export const context = createContext([]);
 
 export default function Layout() {
 	const [token, setToken] = useState(null);
@@ -19,7 +19,7 @@ export default function Layout() {
 	const REDIRECT_URI = "http://localhost:5173";
 	const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 	const RESPONSE_TYPE = "token";
-	
+
 	useEffect(() => {
 		const hash = window.location.hash;
 		let token = window.localStorage.getItem("token");
@@ -59,28 +59,24 @@ export default function Layout() {
 					<>
 						<div className="fixed bottom-14 left-4 right-4 h-20 bg-[#3A0E17] rounded-lg">
 							<div className="w-full h-full flex items-center justify-between p-5">
-								<img src="/images/song.png" alt="" />
+								<img src={text.src || "/images/song.png"} alt="" className="w-[37px] h-[37px]" />
 								<div
 									onClick={() => setOpenPlayer(!openPLayer)}
 									className="w-[90%] h-full flex flex-col items-start justify-between px-2"
 								>
 									<marquee>
-										From Me to You - Mono / Remastered
+										{text.text}
 									</marquee>
 									<span className="player2 text-[#17B54E] flex items-center gap-2">
-										<img
-											src="/icons/bluetooth.svg"
-											alt=""
-										/>
-										BEATSPILL+
+										{text.artist}
 									</span>
 								</div>
 								<div className="flex items-center gap-1">
 									<BiBluetooth size={30} color="#17B54E" />
 									<MdOutlinePause size={40} />
 								</div>
+								{/* <audio src={text.audio}></audio> */}
 							</div>
-
 						</div>
 						<footer className="w-full fixed bottom-0 bg-black h-14 flex items-center">
 							<div className="container flex justify-around">
