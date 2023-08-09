@@ -50,7 +50,7 @@ export default function Layout() {
 
 	return (
 		<context.Provider value={{ text, chageText }}>
-			<div className="relative">
+			<div className="relative pb-[100px]">
 				<main className="overflow-scroll">
 					<Outlet />
 					<Song isOpen={openPLayer} close={setOpenPlayer} />
