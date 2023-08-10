@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { MdOutlinePause } from "react-icons/md";
 import { BiBluetooth } from "react-icons/bi";
-import { FaPlay } from "react-icons/fa";
+import { BsFillPlayFill } from "react-icons/bs";
 import Song from "../components/Song";
 
 export const playerCTX = createContext({ tracks: [], songIdx: 0 });
@@ -115,7 +115,7 @@ export default function Layout() {
 										{play ? (
 											<MdOutlinePause size={40} />
 											) : (
-											<FaPlay size={25} />
+											<BsFillPlayFill size={40} />
 										)}
 									</div>
 								</div>
